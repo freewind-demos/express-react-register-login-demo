@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import request from 'superagent';
+import {hashHistory} from 'react-router';
 
 export default class RegisterForm extends Component {
   constructor(props) {
@@ -42,6 +43,8 @@ export default class RegisterForm extends Component {
       .end((err, res) => {
         if (err) return console.log(err);
         console.log(res);
+        alert('successful!');
+        hashHistory.push('/login');
       })
   }
 }
