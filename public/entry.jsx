@@ -1,15 +1,23 @@
-import Hello from './hello.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import RegisterForm from './register-form.jsx';
+import LoginForm from './login-form.jsx';
+import Layout from './layout.jsx';
+
+import {Router, Route, IndexRedirect, hashHistory} from 'react-router';
+
+const router = <Router history={hashHistory}>
+  <Route path="/" component={Layout}>
+    <IndexRedirect to="/register"/>
+    <Route path="/register" component={RegisterForm}/>
+    <Route path="/login" component={LoginForm}/>
+  </Route>
+</Router>;
 
 ReactDOM.render(
-  <Hello />,
+  router,
   document.getElementById("content")
 );
-
-// use jquery
-console.log($('#content').text());
 
 // Notice!!!
 // Following is required to make reloading happen
